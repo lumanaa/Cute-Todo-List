@@ -1,0 +1,166 @@
+@import "/src/index.scss";
+
+@mixin box($bg, $width) {
+  background-color: $bg;
+  width: $width;
+  height: 44px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  letter-spacing: 2px;
+}
+
+.todo {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+
+  .todo-body {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    // gap: 18px;
+    .cat {
+      position: absolute;
+      left: 33em;
+      top: 4.2em;
+    }
+
+    .sort-search {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      .sort {
+        @include box($bg: $bg-list-light, $width: 176px);
+        gap: 28px;
+        justify-content: end;
+        color: $primary-light;
+        cursor: pointer;
+        #drop {
+          display: flex;
+          margin-right: 23px;
+          justify-content: center;
+        }
+      }
+      .search-body {
+        display: flex;
+        gap: 14px;
+        .search {
+          @include box($bg: $bg-list-light, $width: 230px);
+          color: gray;
+          border: none;
+          font-family: $main;
+          padding: 0 10px;
+
+          &::placeholder {
+            font-family: $main;
+            text-align: center;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .search-icon {
+          @include box($bg: $bg-list-light, $width: 44px);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .todo-container {
+      background-color: $bg-list-light;
+      width: 35vw;
+      height: 70vh;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+
+      .top-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        #heading {
+          text-align: center;
+          font-size: 32px;
+          letter-spacing: 4px;
+          flex: 1;
+          color: $primary-light;
+        }
+      }
+      .top-container > img {
+        position: absolute;
+        right: 1rem;
+        cursor: pointer;
+      }
+      .add-task-container {
+        display: flex;
+        justify-content: space-evenly;
+
+        .add-task {
+          @include box($bg: #d1dbcd, $width: 500px);
+          color: gray;
+          border: none;
+          font-family: $main;
+          padding: 0 10px;
+
+          &::placeholder {
+            font-family: $main;
+            text-align: center;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+        .add {
+          background-color: #d1dbcd;
+          width: 44px;
+          height: 44px;
+          border-radius: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+      }
+
+      .mark-all {
+        background-color: $mark-light;
+        padding: 10px 37px;
+        border: none;
+        border-radius: 10px;
+        color: $primary-light;
+        font-family: $main;
+        font-size: 20px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        width: fit-content;
+        align-self: flex-end;
+        margin: 1rem;
+      }
+      .todo-list-container{
+        display: flex;
+        align-items: center;
+        padding: .5rem;
+        .remove{
+          opacity: 0;
+        }
+        &:hover .remove{
+          opacity: 1;
+          cursor: pointer;
+         
+        }
+      }
+
+    }
+  }
+}
