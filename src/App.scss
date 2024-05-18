@@ -1,5 +1,12 @@
 @import '/variables.scss';
 
-:root{
-    background-color: $bg-light;
-}
+/* App.scss */
+body {
+    background-color: var(--bg-color);
+  }
+  
+  .App {
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+  }
+  

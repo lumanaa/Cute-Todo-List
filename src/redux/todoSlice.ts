@@ -11,7 +11,7 @@ interface TodoState {
     filter: string;
     searchTerm: string;
 }
-
+ 
 
 
 const initialState: TodoState = {
@@ -25,7 +25,7 @@ const todoSlice = createSlice({
     initialState,
     reducers: {
         addTodo: (state, action: PayloadAction<string>) => {
-            state.todos.push({ id: state.todos.length +1 , text: action.payload, completed: false });
+            state.todos.push({ id: state.todos.length + 1, text: action.payload, completed: false });
         },
         filterTodo: (state, action: PayloadAction<string>) => {
             state.filter = action.payload;
@@ -41,10 +41,16 @@ const todoSlice = createSlice({
         },
         removeTodo: (state, action: PayloadAction<number>) => {
             state.todos = state.todos.filter(todo => todo.id !== action.payload);
+        },
+        markAllCompleted: (state) => {
+            state.todos.forEach(todo=>{
+                todo.completed=true;
+            })
         }
+        
     }
 });
 
-export const { addTodo, filterTodo, setSearchTerm, toggleTodo, removeTodo } = todoSlice.actions;
+export const { addTodo, filterTodo, setSearchTerm, toggleTodo, removeTodo, markAllCompleted } = todoSlice.actions;
 
 export default todoSlice.reducer;

@@ -5,16 +5,19 @@ import sun from "../assets/iconcrab/ph_sun-light/ph_sun-light.svg";
 import add from "../assets/iconcrab/basil_plus-outline/basil_plus-outline.svg";
 import cat from "../assets/cat.png";
 import remove from "../assets/iconcrab/basil_cross-outline/basil_cross-outline.svg";
+import check from "../assets/iconcrab/typcn_tick/typcn_tick.svg";
 
 import "./css/todo.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, removeTodo,} from "../redux/todoSlice";
+import { addTodo, markAllCompleted, removeTodo, toggleTodo } from "../redux/todoSlice";
 import { RootState } from "../redux/store";
 
 export default function Todo() {
   const [newTodo, setNewTodo] = useState("");
+  // const [checkTask, setCheckTask] = useState(true);
   const dispatch = useDispatch();
   const todos = useSelector((state: RootState) => state.todo.todos);
+  // const [isDark, setDark]= useState(false);
 
   const handleAddTodo = () => {
     if (newTodo !== "") {
@@ -23,10 +26,24 @@ export default function Todo() {
       setNewTodo("");
     }
   };
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleAddTodo();
+    }
+  };
 
-  const handleRemoveTodo = (todo:number) => {
-   dispatch(removeTodo(todo));
+  const handleRemoveTodo = (todoId: number) => {
+    dispatch(removeTodo(todoId));
+  };
+
+  const handleCheckTask = (todoId: number) => {
+    dispatch(toggleTodo(todoId));
+  };
+
+  const handleMarkAllCompleted = ()=>{
+    dispatch(markAllCompleted());
   }
+
   return (
     <div className='todo'>
       <div className='todo-body'>
@@ -60,31 +77,52 @@ export default function Todo() {
               placeholder='Add new task...'
               value={newTodo}
               onChange={(e) => setNewTodo(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
             <div className='add' onClick={handleAddTodo}>
               <img src={add} alt='' />
             </div>
           </div>
 
-          <button className='mark-all'>Mark All Completed</button>
+          <button className='mark-all' onClick={()=>handleMarkAllCompleted()}>Mark All Completed</button>
 
-          {todos.map((todo, index) => (
-            <div key={index} className='todo-list-container'>
-              <img src={remove} alt='' className="remove" onClick={()=> handleRemoveTodo(todo.id)}/>
-              <li 
-                style={{
-                  listStyle: "none",
-                  fontSize: "24px",
-                  letterSpacing: "3px",
-                  margin: "0.6rem",
-                }}
-                
-              >
-                {todo.text}
-              </li>
+          <div
+            style={{
+              overflowY: "auto",
+              maxHeight: "100%", // adjust the height as needed
+              padding: "10px",
+            }}
+          >
+            {todos.map((todo, index) => (
+              <div key={index} className='todo-list-container'>
+                <div className='remove-list'>
+                  <img
+                    src={remove}
+                    alt=''
+                    className='remove'
+                    onClick={() => handleRemoveTodo(todo.id)}
+                  />
 
-            </div>
-          ))}
+                  <li
+                    className='todo-item'
+                    style={{
+                      listStyle: "none",
+                      fontSize: "30px",
+                      letterSpacing: "3px",
+                      margin: "0.6rem",
+                      textDecoration: todo.completed ? "line-through" : "none",
+                    }}
+                  >
+                    {todo.text}
+                  </li>
+                </div>
+
+                <div className='check' onClick={() => handleCheckTask(todo.id)}>
+                  {todo.completed && <img src={check} alt='' />}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

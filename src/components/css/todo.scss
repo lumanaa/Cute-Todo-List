@@ -28,8 +28,8 @@
     // gap: 18px;
     .cat {
       position: absolute;
-      left: 33em;
-      top: 4.2em;
+      left: 33rem;
+      top: 6.1rem;
     }
 
     .sort-search {
@@ -78,10 +78,11 @@
     .todo-container {
       background-color: $bg-list-light;
       width: 35vw;
-      height: 70vh;
+      height: 40rem;
       border-radius: 12px;
       display: flex;
       flex-direction: column;
+      overflow-y: hidden;
 
       .top-container {
         display: flex;
@@ -147,20 +148,44 @@
         align-self: flex-end;
         margin: 1rem;
       }
-      .todo-list-container{
+      .todo-list-container {
         display: flex;
         align-items: center;
-        padding: .5rem;
-        .remove{
-          opacity: 0;
+        padding: 0.5rem;
+        justify-content: space-between;
+
+        .remove-list {
+          display: flex;
+          .remove {
+            opacity: 0;
+          }
         }
-        &:hover .remove{
+        &:hover .remove {
           opacity: 1;
           cursor: pointer;
-         
+        }
+        .check {
+          padding: 0 1rem;
+          border: 1px solid #131313;
+          width: 2.5rem;
+          height: 2.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
         }
       }
-
     }
   }
 }
+
+.todo-lists {
+  height: 27rem;
+  .todo-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: calc(100%); /* Adjust the max-width value as needed */
+  }
+}
+

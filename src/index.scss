@@ -1,18 +1,29 @@
-@import '/variables.scss';
+/* index.scss */
+@import "/variables.scss";
+
+:root {
+  --primary-color: #131313;
+  --bg-color: #b8cec2;
+  --bg-list-color: #f8e6ce;
+  --mark-color: #ebc8b4;
+  --box-color: #d1dbcd;
+}
+
+[data-theme="dark"] {
+  --primary-color: #eff4f9;
+  --bg-color: #465375;
+  --bg-list-color: #959bbd;
+  --mark-color: #f3dbe9;
+  --box-color: #c0d3e4;
+}
+
+body {
+  background-color: var(--bg-color);
+}
 
 #root {
-    /* Add your styles here */
-    box-sizing: border-box;
-    font-family: $main; /* Example font family */
-
-    padding: 0px;
-    margin: 0;
-    /* Add any other styles you want to apply */
-   
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+  font-family: $main; /* Example font family */
+  padding: 0;
+  margin: 0;
+}
