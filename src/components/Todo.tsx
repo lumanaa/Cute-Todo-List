@@ -105,6 +105,7 @@ export const Todo: React.FC<TodoProps> = ({ toggleTheme, theme }) => {
 
           <div
             style={{
+              overflowX:"hidden",
               overflowY: "auto",
               maxHeight: "100%", // adjust the height as needed
              
