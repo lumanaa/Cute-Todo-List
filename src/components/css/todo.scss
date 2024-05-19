@@ -20,16 +20,28 @@
   justify-content: center;
   flex-direction: column;
   position: relative;
+  @include smaller-than($mantine-breakpoint-xs) {
+    height: 100%;
+  }
 
   .todo-body {
     display: flex;
+
     flex-direction: column;
     align-items: end;
+    @include smaller-than($mantine-breakpoint-xs) {
+      align-items: center;
+    }
+
     // gap: 18px;
     .cat {
       position: absolute;
       left: 33rem;
-      top: 6.1rem;
+      top: 4.9rem;
+      z-index: 1;
+      @include smaller-than($mantine-breakpoint-xs) {
+        left: 0;
+      }
     }
 
     .sort-search {
@@ -38,10 +50,10 @@
       gap: 1rem;
       align-items: center;
       .sort {
-        @include box($bg: $bg-list-light, $width: 176px);
+        @include box($bg: var(--box-color), $width: 176px);
         gap: 28px;
         justify-content: end;
-        color: $primary-light;
+        color: gray;
         cursor: pointer;
         #drop {
           display: flex;
@@ -53,7 +65,7 @@
         display: flex;
         gap: 14px;
         .search {
-          @include box($bg: $bg-list-light, $width: 230px);
+          @include box($bg: var(--box-color), $width: 230px);
           color: gray;
           border: none;
           font-family: $main;
@@ -69,20 +81,25 @@
         }
 
         .search-icon {
-          @include box($bg: $bg-list-light, $width: 44px);
+          @include box($bg: var(--box-color), $width: 44px);
           cursor: pointer;
         }
       }
     }
 
     .todo-container {
-      background-color: $bg-list-light;
+      z-index: 2;
+      background-color: var(--bg-list-color);
       width: 35vw;
       height: 40rem;
       border-radius: 12px;
       display: flex;
       flex-direction: column;
       overflow-y: hidden;
+      @include smaller-than($mantine-breakpoint-xs) {
+        width: 50%;
+        // height: 100%;
+      }
 
       .top-container {
         display: flex;
@@ -95,7 +112,7 @@
           font-size: 32px;
           letter-spacing: 4px;
           flex: 1;
-          color: $primary-light;
+          color: var(--primary-color);
         }
       }
       .top-container > img {
@@ -108,7 +125,7 @@
         justify-content: space-evenly;
 
         .add-task {
-          @include box($bg: #d1dbcd, $width: 500px);
+          @include box($bg: var(--add-box), $width: 500px);
           color: gray;
           border: none;
           font-family: $main;
@@ -123,7 +140,7 @@
           }
         }
         .add {
-          background-color: #d1dbcd;
+          background-color: var(--box-color);
           width: 44px;
           height: 44px;
           border-radius: 100%;
@@ -135,7 +152,7 @@
       }
 
       .mark-all {
-        background-color: $mark-light;
+        background-color: var(--mark-color);
         padding: 10px 37px;
         border: none;
         border-radius: 10px;
@@ -188,4 +205,3 @@
     max-width: calc(100%); /* Adjust the max-width value as needed */
   }
 }
-

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import dropdown from "../assets/iconcrab/mingcute_down-line/dropdown.svg";
 import search from "../assets/iconcrab/basil_search-outline/basil_search-outline.svg";
 import sun from "../assets/iconcrab/ph_sun-light/ph_sun-light.svg";
+import moon from "../assets/iconcrab/moon.png";
 import add from "../assets/iconcrab/basil_plus-outline/basil_plus-outline.svg";
 import cat from "../assets/cat.png";
 import remove from "../assets/iconcrab/basil_cross-outline/basil_cross-outline.svg";
@@ -9,10 +10,20 @@ import check from "../assets/iconcrab/typcn_tick/typcn_tick.svg";
 
 import "./css/todo.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, markAllCompleted, removeTodo, toggleTodo } from "../redux/todoSlice";
+import {
+  addTodo,
+  markAllCompleted,
+  removeTodo,
+  toggleTodo,
+} from "../redux/todoSlice";
 import { RootState } from "../redux/store";
 
-export default function Todo() {
+interface TodoProps {
+  theme: string;
+  toggleTheme: () => void;
+}
+
+export const Todo: React.FC<TodoProps> = ({ toggleTheme, theme }) => {
   const [newTodo, setNewTodo] = useState("");
   // const [checkTask, setCheckTask] = useState(true);
   const dispatch = useDispatch();
@@ -27,7 +38,7 @@ export default function Todo() {
     }
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleAddTodo();
     }
   };
@@ -40,9 +51,9 @@ export default function Todo() {
     dispatch(toggleTodo(todoId));
   };
 
-  const handleMarkAllCompleted = ()=>{
+  const handleMarkAllCompleted = () => {
     dispatch(markAllCompleted());
-  }
+  };
 
   return (
     <div className='todo'>
@@ -57,7 +68,7 @@ export default function Todo() {
           <div className='search-body'>
             <input type='text' className='search' placeholder='Search...' />
             <div className='search-icon'>
-              <img src={search} alt='' />
+              <img src={search} alt=''  />
             </div>
           </div>
         </div>
@@ -68,7 +79,7 @@ export default function Todo() {
         <div className='todo-container'>
           <div className='top-container'>
             <p id='heading'>TO DO LIST</p>
-            <img src={sun} alt='' />
+            <img src={theme === 'light' ? sun : moon} onClick={toggleTheme} alt='' />
           </div>
           <div className='add-task-container'>
             <input
@@ -84,7 +95,9 @@ export default function Todo() {
             </div>
           </div>
 
-          <button className='mark-all' onClick={()=>handleMarkAllCompleted()}>Mark All Completed</button>
+          <button className='mark-all' onClick={() => handleMarkAllCompleted()}>
+            Mark All Completed
+          </button>
 
           <div
             style={{
@@ -127,4 +140,4 @@ export default function Todo() {
       </div>
     </div>
   );
-}
+};

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
 import './index.css';
-import Todo from './components/Todo';
+import { Todo } from './components/Todo';
+
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -16,10 +17,8 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={toggleTheme}>
-        Toggle Theme
-      </button>
-      <Todo />
+     
+      <Todo toggleTheme={toggleTheme} theme={theme}/>
     </div>
   );
 }

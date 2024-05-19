@@ -1,0 +1,25 @@
+$mantine-breakpoint-xs: '36em';
+$mantine-breakpoint-sm: '48em';
+$mantine-breakpoint-md: '62em';
+$mantine-breakpoint-lg: '75em';
+$mantine-breakpoint-xl: '88em';
+$mantine-breakpoint-fold:'344px';
+
+@mixin smaller-than($breakpoint) {
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  }
+  
+  @mixin larger-than($breakpoint) {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+  
+  @mixin exactly($breakpoint) {
+    @media (min-width: $breakpoint) and (max-width: calc(#{$breakpoint} - 0.01px)) {
+      @content;
+    }
+  }
+  

@@ -1,12 +1,15 @@
 /* index.scss */
 @import "/variables.scss";
+@import "/mantine";
 
 :root {
   --primary-color: #131313;
   --bg-color: #b8cec2;
   --bg-list-color: #f8e6ce;
   --mark-color: #ebc8b4;
-  --box-color: #d1dbcd;
+  --box-color: #F8E6CE;
+  --add-box: #D1DBCD;
+  
 }
 
 [data-theme="dark"] {
@@ -15,6 +18,8 @@
   --bg-list-color: #959bbd;
   --mark-color: #f3dbe9;
   --box-color: #c0d3e4;
+  --add-box: #c0d3e4;
+
 }
 
 body {
