@@ -68,18 +68,22 @@ export const Todo: React.FC<TodoProps> = ({ toggleTheme, theme }) => {
           <div className='search-body'>
             <input type='text' className='search' placeholder='Search...' />
             <div className='search-icon'>
-              <img src={search} alt=''  />
+              <img src={search} alt='' />
             </div>
           </div>
         </div>
-        <img src={cat} alt='' className='cat' />
+      
         <p>
           <a href='https://giphy.com/stickers/cat-pixel-bongo-UQ1EI1ML2ABQdbebup'></a>
         </p>
         <div className='todo-container'>
           <div className='top-container'>
             <p id='heading'>TO DO LIST</p>
-            <img src={theme === 'light' ? sun : moon} onClick={toggleTheme} alt='' />
+            <img
+              src={theme === "light" ? sun : moon}
+              onClick={toggleTheme}
+              alt=''
+            />
           </div>
           <div className='add-task-container'>
             <input
@@ -103,7 +107,7 @@ export const Todo: React.FC<TodoProps> = ({ toggleTheme, theme }) => {
             style={{
               overflowY: "auto",
               maxHeight: "100%", // adjust the height as needed
-              padding: "10px",
+             
             }}
           >
             {todos.map((todo, index) => (
@@ -116,18 +120,14 @@ export const Todo: React.FC<TodoProps> = ({ toggleTheme, theme }) => {
                     onClick={() => handleRemoveTodo(todo.id)}
                   />
 
-                  <li
+                  <div
                     className='todo-item'
                     style={{
-                      listStyle: "none",
-                      fontSize: "30px",
-                      letterSpacing: "3px",
-                      margin: "0.6rem",
                       textDecoration: todo.completed ? "line-through" : "none",
                     }}
                   >
-                    {todo.text}
-                  </li>
+                    <p>{todo.text}</p>
+                  </div>
                 </div>
 
                 <div className='check' onClick={() => handleCheckTask(todo.id)}>

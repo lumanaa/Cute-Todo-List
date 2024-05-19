@@ -6,7 +6,7 @@ import { Todo } from './components/Todo';
 
 function App() {
   const [theme, setTheme] = useState('light');
-
+ 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
@@ -14,6 +14,8 @@ function App() {
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
+  
+
 
   return (
     <div className="App">
