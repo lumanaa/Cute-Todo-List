@@ -80,7 +80,7 @@
     .todo-container {
       z-index: 2;
       background-color: var(--bg-list-color);
-      width: 35vw;
+      width: 45vw;
       height: 40rem;
       border-radius: 12px;
       display: flex;
@@ -90,10 +90,7 @@
         width: 90%;
         margin-top: 2rem;
       }
-      @include larger-than($mantine-breakpoint-md) {
-        width: 100%;
-        margin-top: 2rem;
-      }
+   
 
       .top-container {
         display: flex;
@@ -123,9 +120,10 @@
       .add-task-container {
         display: flex;
         justify-content: space-evenly;
+        align-items: center;
 
         .add-task {
-          @include box($bg: var(--add-box), $width: 500px);
+          @include box($bg: var(--add-box), $width: 600px);
           color: gray;
           border: none;
           font-family: $main;
