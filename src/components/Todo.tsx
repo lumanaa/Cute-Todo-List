@@ -4,7 +4,7 @@ import search from "../assets/iconcrab/basil_search-outline/basil_search-outline
 import sun from "../assets/iconcrab/ph_sun-light/ph_sun-light.svg";
 import moon from "../assets/iconcrab/moon.png";
 import add from "../assets/iconcrab/basil_plus-outline/basil_plus-outline.svg";
-import cat from "../assets/cat.png";
+
 import remove from "../assets/iconcrab/basil_cross-outline/basil_cross-outline.svg";
 import check from "../assets/iconcrab/typcn_tick/typcn_tick.svg";
 
